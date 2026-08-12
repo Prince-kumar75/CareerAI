@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: careerai-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: career_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d career_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    container_name: careerai-web
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=production
+      - DATABASE_URL=postgresql://postgres:postgrespassword@db:5432/career_db
+      - HOST=0.0.0.0
+      - PORT=8000
+      - CORS_ORIGINS=http://localhost:3000,http://localhost:8000,http://127.0.0.1:8000
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./models:/app/models  # Mount volume to share trained models
+
+volumes:
+  postgres_data:

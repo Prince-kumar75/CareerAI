@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerAI - AI Career Recommendation Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Styleheet -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="mesh-gradient mesh-1"></div>
+    <div class="mesh-gradient mesh-2"></div>
+    <div class="mesh-gradient mesh-3"></div>
+
+    <div class="app-container">
+        <!-- Navigation Header -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-brain-circuit brain-icon"></i>
+                <h1>Career<span>AI</span></h1>
+            </div>
+            <div class="header-tagline">AI Career Recommendation Engine</div>
+            <div class="health-badge-container">
+                <span id="health-badge" class="badge badge-checking">
+                    <i class="fa-solid fa-spinner fa-spin"></i> API Checking
+                </span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-content">
+            <!-- Left Side: Inputs -->
+            <section class="card glass input-section">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-sliders header-icon"></i> Your Professional Profile</h2>
+                    <p>Provide your background and interests to generate personalized recommendations.</p>
+                </div>
+                
+                <form id="recommendation-form" class="recommend-form">
+                    <!-- Academic Block -->
+                    <div class="form-group-title">Academic Background</div>
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="education_level">Education Level</label>
+                            <select id="education_level" required>
+                                <option value="Bachelor's">Bachelor's Degree</option>
+                                <option value="Master's">Master's Degree</option>
+                                <option value="PhD">PhD / Doctorate</option>
+                                <option value="Associate">Associate Degree</option>
+                                <option value="High School">High School / GED</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="degree_branch">Degree / Specialization</label>
+                            <input type="text" id="degree_branch" placeholder="e.g. Computer Science, Mathematics" required value="Computer Science">
+                        </div>
+                    </div>
+
+                    <!-- Professional Experience -->
+                    <div class="form-group-title">Experience & Preferences</div>
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="years_of_experience">Years of Experience: <span id="exp-val">2</span></label>
+                            <input type="range" id="years_of_experience" min="0" max="15" step="0.5" value="2" class="slider">
+                        </div>
+                        <div class="form-group">
+                            <label for="preferred_job_type">Job Type Preference</label>
+                            <select id="preferred_job_type" required>
+                                <option value="Full-time">Full-time</option>
+                                <option value="Remote">Remote</option>
+                                <option value="Internship">Internship</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Part-time">Part-time</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferred_domain">Preferred Domain / Field</label>
+                        <select id="preferred_domain" required>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Machine Learning">Machine Learning / AI</option>
+                            <option value="DevOps">DevOps & SRE</option>
+                            <option value="Cloud Computing">Cloud Computing</option>
+                            <option value="Cyber Security">Cyber Security</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Product Management">Product Management</option>
+                            <option value="Database Administration">Database Administration</option>
+                        </select>
+                    </div>
+
+                    <!-- Skills & Tags Input Block -->
+                    <div class="form-group-title">Skills & Interests (Press Enter to add tags)</div>
+                    
+                    <div class="form-group">
+                        <label for="tech-skills-input">Technical Skills</label>
+                        <div class="tag-input-container" id="tech-skills-container">
+                            <input type="text" id="tech-skills-input" placeholder="e.g. React, SQL, AWS, Pandas">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="languages-input">Programming Languages</label>
+                        <div class="tag-input-container" id="languages-container">
+                            <input type="text" id="languages-input" placeholder="e.g. Python, JavaScript, Java">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="soft-skills-input">Soft Skills</label>
+                        <div class="tag-input-container" id="soft-skills-container">
+                            <input type="text" id="soft-skills-input" placeholder="e.g. Problem-solving, Communication">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests-input">General Interests</label>
+                        <div class="tag-input-container" id="interests-container">
+                            <input type="text" id="interests-input" placeholder="e.g. Machine Learning, Web Apps, Design">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="career-interests-input">Career Areas of Interest</label>
+                        <div class="tag-input-container" id="career-interests-container">
+                            <input type="text" id="career-interests-input" placeholder="e.g. AI & Big Data, Cloud, UI Design">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Career Match
+                    </button>
+                </form>
+            </section>
+
+            <!-- Right Side: Outputs & Recommendations -->
+            <section class="output-section">
+                <!-- Welcome State -->
+                <div class="card glass state-card" id="welcome-state">
+                    <div class="state-content">
+                        <div class="pulse-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3>Ready for Analysis</h3>
+                        <p>Fill out the profile features on the left and click "Generate Career Match" to run predictions through our ML model.</p>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div class="card glass state-card hidden" id="loading-state">
+                    <div class="state-content">
+                        <div class="neural-network-loader">
+                            <div class="node node-1"></div>
+                            <div class="node node-2"></div>
+                            <div class="node node-3"></div>
+                            <div class="line line-1"></div>
+                            <div class="line line-2"></div>
+                        </div>
+                        <h3>Analyzing Profile</h3>
+                        <p>Running preprocessing, scaling features, and evaluating career matches using the trained machine learning model...</p>
+                    </div>
+                </div>
+
+                <!-- Results State -->
+                <div class="results-container hidden" id="results-state">
+                    <!-- Top Match Hero Card -->
+                    <div class="card glass hero-recommendation-card">
+                        <div class="hero-header">
+                            <div class="hero-title-group">
+                                <span class="hero-badge"><i class="fa-solid fa-medal"></i> Top Match</span>
+                                <h2 id="top-career-title">Data Scientist</h2>
+                            </div>
+                            <div class="match-score-circle">
+                                <svg class="progress-ring" width="80" height="80">
+                                    <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="6" fill="transparent" r="34" cx="40" cy="40"/>
+                                    <circle class="progress-ring__circle" id="top-progress-ring" stroke="var(--neon-green)" stroke-width="6" fill="transparent" r="34" cx="40" cy="40"/>
+                                </svg>
+                                <div class="progress-ring__text" id="top-match-score">91.5%</div>
+                            </div>
+                        </div>
+                        <p class="hero-description" id="top-career-desc">Analyzes and interprets complex data to help organizations make informed decisions using ML and statistics.</p>
+                        
+                        <div class="hero-reason-box">
+                            <i class="fa-solid fa-quote-left"></i>
+                            <span id="top-reason-text">Strong Python and machine learning skills match the requirements of a Data Scientist role.</span>
+                        </div>
+                    </div>
+
+                    <!-- Explanations & Other Recommendations -->
+                    <div class="recommendations-list-title">All Recommendations</div>
+                    <div class="recommendations-list" id="recommendations-list-container">
+                        <!-- Dynamic Recommendation Cards will be injected here -->
+                    </div>
+
+                    <!-- Feedback Section -->
+                    <div class="card glass feedback-card" id="feedback-card">
+                        <h3><i class="fa-solid fa-comments"></i> Was this accurate?</h3>
+                        <p>Submit your rating to help us optimize the recommendation system.</p>
+                        
+                        <div class="feedback-stars" id="star-rating-container">
+                            <i class="fa-regular fa-star star" data-value="1"></i>
+                            <i class="fa-regular fa-star star" data-value="2"></i>
+                            <i class="fa-regular fa-star star" data-value="3"></i>
+                            <i class="fa-regular fa-star star" data-value="4"></i>
+                            <i class="fa-regular fa-star star" data-value="5"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="feedback-text" rows="2" placeholder="Write a short comment (optional)..."></textarea>
+                        </div>
+                        <button class="btn btn-secondary" id="submit-feedback-btn">
+                            Submit Feedback
+                        </button>
+                        <div id="feedback-message" class="feedback-message hidden">
+                            Thank you for your feedback!
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="/static/script.js"></script>
+</body>
+</html>
