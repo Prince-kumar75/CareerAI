@@ -1,4 +1,8 @@
-# AI Career Recommendation System
+# CareerAI - AI Career Recommendation System
+
+[![Deploy to Render](https://render.com/images/deploy-to-render.svg)](https://render.com/deploy?repo=https://github.com/Prince-kumar75/CareerAI)
+&nbsp;&nbsp;
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/Prince-kumar75/CareerAI)
 
 An enterprise-grade, production-ready AI-powered career recommendation platform. The system leverages machine learning classifiers to analyze user profiles—including technical skills, soft skills, educational backgrounds, years of experience, and interests—and suggests the top 3-5 most aligned career roles with custom fit scores, comprehensive skill gap analyses, and learning roadmaps.
 
