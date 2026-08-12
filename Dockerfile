@@ -33,8 +33,7 @@ RUN pip install --no-cache /wheels/*
 # Copy application files
 COPY app/ ./app/
 COPY data/ ./data/
-# Ensure models directory exists
-RUN mkdir -p /app/models
+COPY models/ ./models/
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
