@@ -3,23 +3,6 @@
 An enterprise-grade, production-ready AI-powered career recommendation platform. The system leverages machine learning classifiers to analyze user profiles—including technical skills, soft skills, educational backgrounds, years of experience, and interests—and suggests the top 3-5 most aligned career roles with custom fit scores, comprehensive skill gap analyses, and learning roadmaps.
 
 ---
-
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Tech Stack](#tech-stack)
-4. [Architecture & Folder Structure](#architecture--folder-structure)
-5. [ML Training & Preprocessing Pipeline](#ml-training--preprocessing-pipeline)
-6. [Database Schema](#database-schema)
-7. [API Endpoints](#api-endpoints)
-8. [Installation & Setup](#installation--setup)
-9. [Running the Application](#running-the-application)
-10. [Testing](#testing)
-11. [Docker Containerization](#docker-containerization)
-12. [Future Improvements](#future-improvements)
-
----
-
 ## Project Overview
 
 In the rapidly evolving tech space, finding the right career fit can be challenging. This platform provides data-driven career matches by utilizing supervised classification models trained on detailed developer profiles, combined with a deterministic rules-based skill parser.
