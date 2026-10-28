@@ -376,9 +376,3 @@ docker run -p 8000:8000 --env-file .env career-recommendation-api
 ```
 
 ---
-
-## Future Improvements
-
-1. **Collaborative Filtering**: Integrate feedback ratings from the database into the recommendations to refine matching scores based on what previous users found helpful.
-2. **Deep Learning Sequence Embeddings**: Convert skills and resumes into dense semantic embeddings using Sentence-Transformers rather than traditional TF-IDF, allowing matching on synonyms (e.g. "Artificial Intelligence" matching "AI").
-3. **External Job Board Integration**: Automatically fetch open job listings from LinkedIn, Indeed, or GitHub Jobs matching the recommended careers.
